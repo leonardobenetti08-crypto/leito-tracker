@@ -157,7 +157,7 @@
 </style>
 </head>
 <body>
- 
+
 <div class="header">
   <div class="header-top">
     <div class="logo">⚡ Leito</div>
@@ -170,7 +170,7 @@
     <button class="nav-btn" onclick="showView('ajustes', this)">Ajustes</button>
   </nav>
 </div>
- 
+
 <div id="view-hoy" class="view active"><div id="sessionContent"></div></div>
 <div id="view-historial" class="view">
   <div class="section-label">Sesiones anteriores</div>
@@ -205,7 +205,7 @@
     <button class="settings-btn danger" onclick="clearAllData()">🗑 Borrar todos los datos</button>
   </div>
 </div>
- 
+
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div class="modal">
     <div class="modal-header">
@@ -215,62 +215,64 @@
     <div class="modal-body" id="modalBody"></div>
   </div>
 </div>
- 
+
 <div class="toast" id="toast"></div>
- 
+
 <script>
 const RUTINA = {
   0: { nombre: 'Domingo', tipo: 'descanso', foco: 'Descanso total', ejercicios: [] },
-  1: { nombre: 'Lunes', tipo: 'entreno', foco: 'Pecho dominante + hombro lateral + abs', ejercicios: [
-    { id: 'lun1', nombre: 'Press inclinado leve (Smith)', ref: 'Top 4–6 / Back off 6–8' },
-    { id: 'lun2', nombre: 'Press Hammer plano', ref: '6–8 / 8–10' },
-    { id: 'lun3', nombre: 'Press convergente máquina', ref: '8–10 / 10–12' },
-    { id: 'lun4', nombre: 'Elevación lateral polea unilateral', ref: '10–12 / 12–15 + drop' },
-    { id: 'lun5', nombre: 'Tríceps extensión polea alta', ref: '8–10 / 10–12 / 12–15' },
-    { id: 'lun6', nombre: 'Tríceps overhead barra', ref: '8–10 / 10–12' },
-    { id: 'lun7', nombre: 'Crunch polea + Elevaciones piernas', ref: '2×10–15 c/u' },
+  1: { nombre: 'Lunes', tipo: 'entreno', foco: 'Pecho dominante + hombro lateral + tríceps', ejercicios: [
+    { id: 'lun1', nombre: 'Elevación lateral mancuerna (activación)', ref: '1×15–20' },
+    { id: 'lun2', nombre: 'Press Smith inclinado leve (15°)', ref: 'Top 4–6 / Back off 6–8' },
+    { id: 'lun3', nombre: 'Press Hammer plano', ref: '6–8 / 8–10' },
+    { id: 'lun4', nombre: 'Apertura máquina', ref: '8–10 / 10–12' },
+    { id: 'lun5', nombre: 'Elevación lateral polea unilateral', ref: '10–12 / 12–15 + drop' },
+    { id: 'lun6', nombre: 'Extensión tríceps polea alta', ref: '8–10 / 10–12' },
+    { id: 'lun7', nombre: 'Extensión overhead sentado', ref: '8–10 / 10–12' },
   ]},
   2: { nombre: 'Martes', tipo: 'entreno', foco: 'Espalda (densidad) + bíceps', ejercicios: [
-    { id: 'mar1', nombre: 'Jalón neutro/cerrado', ref: '8–10 / 10–12' },
+    { id: 'mar1', nombre: 'Jalón cerrado', ref: '8–10 / 10–12' },
     { id: 'mar2', nombre: 'Remo con barra', ref: 'Top 4–6 / Back off 6–8' },
-    { id: 'mar3', nombre: 'Remo con mancuerna (estricto)', ref: '6–8 / 8–10' },
-    { id: 'mar4', nombre: 'Pullover unilateral polea (tobillera)', ref: '10–12 / 12–15' },
-    { id: 'mar5', nombre: 'Curl predicador en polea', ref: '8–10 / 10–12 / 12–15' },
-    { id: 'mar6', nombre: 'Curl inclinado bíceps', ref: '8–10 / 10–12' },
+    { id: 'mar3', nombre: 'Remo máquina placas', ref: 'Top 6–8 / Back off 8–10 / acum 10–12' },
+    { id: 'mar4', nombre: 'Curl predicador en polea', ref: '8–10 / 10–12' },
+    { id: 'mar5', nombre: 'Pullover máquina Hammer', ref: '10–12 / 12–15' },
+    { id: 'mar6', nombre: 'Curl inclinado codo apoyado (spider)', ref: '8–10 / 10–12' },
   ]},
-  3: { nombre: 'Miércoles', tipo: 'entreno', foco: 'Piernas + abs', ejercicios: [
-    { id: 'mie1', nombre: 'Gemelos', ref: '10–12 / 12–15 / 12–15' },
-    { id: 'mie2', nombre: 'Hack squat', ref: 'Top 4–6 / Back off 6–8' },
-    { id: 'mie3', nombre: 'Prensa', ref: '8–10 / 10–12' },
-    { id: 'mie4', nombre: 'Hiperextensiones (glúteo)', ref: '10–12 / 12–15' },
-    { id: 'mie5', nombre: 'Extensión cuádriceps', ref: '10–12 / 12–15' },
-    { id: 'mie6', nombre: 'Curl femoral sentado', ref: '8–10 / 10–12' },
-    { id: 'mie7', nombre: 'Ab wheel / rollout', ref: '2×8–12' },
+  3: { nombre: 'Miércoles', tipo: 'descanso', foco: 'Descanso', ejercicios: [] },
+  4: { nombre: 'Jueves', tipo: 'entreno', foco: 'Piernas + abs', ejercicios: [
+    { id: 'jue1', nombre: 'Gemelos', ref: '10–12 / 12–15 / 12–15' },
+    { id: 'jue2', nombre: 'Hack squat', ref: 'Top 4–6 / Back off 6–8' },
+    { id: 'jue3', nombre: 'Prensa', ref: '8–10 / 10–12' },
+    { id: 'jue4', nombre: 'Hiperextensiones (glúteo)', ref: '10–12 / 12–15' },
+    { id: 'jue5', nombre: 'Extensión cuádriceps', ref: '10–12 / 12–15' },
+    { id: 'jue6', nombre: 'Curl femoral sentado', ref: '8–10 / 10–12' },
+    { id: 'jue7', nombre: 'Ab wheel / rollout', ref: '2×8–12' },
   ]},
-  4: { nombre: 'Jueves', tipo: 'descanso', foco: 'Descanso', ejercicios: [] },
-  5: { nombre: 'Viernes', tipo: 'entreno', foco: 'Hombro dominante + pecho + tríceps', ejercicios: [
-    { id: 'vie1', nombre: 'Elevación lateral polea', ref: '10–12 / 12–15 + drop' },
-    { id: 'vie2', nombre: 'Elevaciones laterales mancuernas', ref: '8–10 / 10–12' },
+  5: { nombre: 'Viernes', tipo: 'entreno', foco: 'Hombro dominante + pecho (estiramiento) + tríceps', ejercicios: [
+    { id: 'vie1', nombre: 'Elevación lateral polea unilateral', ref: '10–12 / 12–15 + drop' },
+    { id: 'vie2', nombre: 'Elevación lateral mancuerna', ref: '8–10 / 10–12' },
     { id: 'vie3', nombre: 'Press hombro Hammer', ref: '6–8 / 8–10' },
-    { id: 'vie4', nombre: 'Press pecho Hammer (estiramiento)', ref: '8–10 / 10–12' },
-    { id: 'vie5', nombre: 'Tríceps overhead barra sentado', ref: '8–10 / 10–12' },
+    { id: 'vie4', nombre: 'Apertura polea baja / cable cross', ref: '8–10 / 10–12' },
+    { id: 'vie5', nombre: 'JM Press Smith', ref: 'Top 6–8 / Back off 8–10 / acum 10–12' },
+    { id: 'vie6', nombre: 'Abs', ref: '2 ejercicios × 2 series' },
   ]},
   6: { nombre: 'Sábado', tipo: 'entreno', foco: 'Mix acumulativo + abs', ejercicios: [
-    { id: 'sab1', nombre: 'Pecho máquina placas', ref: '8–10 / 10–12' },
-    { id: 'sab2', nombre: 'Remo máquina pecho apoyado', ref: '8–10 / 10–12' },
-    { id: 'sab3', nombre: 'Elevaciones laterales (alto volumen)', ref: '12–15 / 15–20 + drop' },
-    { id: 'sab4', nombre: 'Curl inclinado bíceps', ref: '8–10 / 10–12' },
-    { id: 'sab5', nombre: 'Tríceps extensión polea baja apoyado', ref: '10–12 / 12–15' },
-    { id: 'sab6', nombre: 'Crunch máquina/polea + Elevaciones', ref: '2×12–15 c/u' },
+    { id: 'sab1', nombre: 'Dominada cerrada con peso', ref: 'Top 4–6 / Back off 6–8' },
+    { id: 'sab2', nombre: 'Press plano máquina placas', ref: '8–10 / 10–12' },
+    { id: 'sab3', nombre: 'Elevación lateral mancuerna (alto volumen)', ref: '12–15 / 15–20 + drop' },
+    { id: 'sab4', nombre: 'Curl predicador en polea', ref: '10–12 / 12–15' },
+    { id: 'sab5', nombre: 'Extensión barra tríceps (énfasis estiramiento)', ref: '8–10 / 10–12' },
+    { id: 'sab6', nombre: 'Curl martillo mancuerna', ref: '8–10 / 10–12' },
+    { id: 'sab7', nombre: 'Abs', ref: '2 ejercicios × 2 series' },
   ]},
 };
- 
+
 const ALL_EXERCISES = Object.values(RUTINA).flatMap(d => d.ejercicios.map(e => ({ ...e, dia: d.nombre })));
 let sessionData = {};
 let openExercises = new Set();
 let selectedDow = new Date().getDay();
 let selectedDateOffset = 0;
- 
+
 function getSessions() { return JSON.parse(localStorage.getItem('leito_sessions') || '[]'); }
 function saveSessions(s) { localStorage.setItem('leito_sessions', JSON.stringify(s)); }
 function getTodayKey() { return new Date().toISOString().split('T')[0]; }
@@ -279,20 +281,20 @@ function getSelectedDateKey() {
   d.setDate(d.getDate() + selectedDateOffset);
   return d.toISOString().split('T')[0];
 }
- 
+
 document.addEventListener('DOMContentLoaded', () => {
   const now = new Date();
   document.getElementById('headerDate').textContent = now.toLocaleDateString('es-CL', { weekday: 'long', day: 'numeric', month: 'short' });
   renderHoy(); renderHistorial(); renderProgreso();
 });
- 
+
 function showView(name, btn) {
   document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('view-' + name).classList.add('active');
   btn.classList.add('active');
 }
- 
+
 function selectDay(dow, offset) {
   selectedDow = dow;
   selectedDateOffset = offset;
@@ -300,7 +302,7 @@ function selectDay(dow, offset) {
   openExercises.clear();
   renderHoy();
 }
- 
+
 function renderHoy() {
   const dow = selectedDow;
   const dia = RUTINA[dow];
@@ -310,7 +312,7 @@ function renderHoy() {
   weekStart.setDate(today.getDate() - today.getDay());
   const sessions = getSessions();
   const sessionDates = new Set(sessions.map(s => s.date));
- 
+
   let weekHtml = '<div class="week-strip">';
   const dayNames = ['D','L','M','X','J','V','S'];
   for (let i = 0; i < 7; i++) {
@@ -326,7 +328,7 @@ function renderHoy() {
     </div>`;
   }
   weekHtml += '</div>';
- 
+
   // Day selector — todos los días de la semana
   const todayDow = new Date().getDay();
   const dayLabels = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
@@ -339,12 +341,12 @@ function renderHoy() {
   }
   dayPickerHtml += '</div>';
   weekHtml = dayPickerHtml + weekHtml;
- 
+
   if (dia.tipo === 'descanso') {
     container.innerHTML = weekHtml + `<div class="rest-card"><div class="rest-icon">😴</div><h2>Día de descanso</h2><p>Recuperación total.</p></div>`;
     return;
   }
- 
+
   const selectedDateKey = getSelectedDateKey();
   const alreadySaved = sessions.find(s => s.date === selectedDateKey);
   let html = weekHtml;
@@ -353,7 +355,7 @@ function renderHoy() {
   if (alreadySaved) {
     html += `<div style="background:var(--accent-dim);border:1px solid var(--accent);border-radius:10px;padding:12px 14px;margin-bottom:16px;font-size:13px;color:var(--accent);font-family:var(--mono);">✓ Sesión guardada</div>`;
   }
- 
+
   dia.ejercicios.forEach(ex => {
     const data = sessionData[ex.id] || { sets: [], note: '' };
     const isDone = data.sets.length > 0;
@@ -381,11 +383,11 @@ function renderHoy() {
       </div>
     </div>`;
   });
- 
+
   html += `<button class="finish-btn" onclick="finishSession(${dow})">Guardar sesión completa</button>`;
   container.innerHTML = html;
 }
- 
+
 function renderSetRow(exId, idx, reps = '', weight = '') {
   return `<div class="set-row" id="setrow-${exId}-${idx}">
     <div class="set-num">${idx + 1}</div>
@@ -394,14 +396,14 @@ function renderSetRow(exId, idx, reps = '', weight = '') {
     <button class="del-set-btn" onclick="removeSet('${exId}', ${idx})">×</button>
   </div>`;
 }
- 
+
 function toggleExercise(id) {
   if (openExercises.has(id)) openExercises.delete(id);
   else openExercises.add(id);
   document.getElementById('body-' + id).classList.toggle('open');
   document.getElementById('card-' + id).querySelector('.chevron').textContent = openExercises.has(id) ? '▲' : '▼';
 }
- 
+
 function addSet(exId) {
   if (!sessionData[exId]) sessionData[exId] = { sets: [], note: '' };
   sessionData[exId].sets.push({ reps: '', weight: '' });
@@ -409,26 +411,26 @@ function addSet(exId) {
   document.getElementById('sets-' + exId).insertAdjacentHTML('beforeend', renderSetRow(exId, idx));
   updateCardDone(exId);
 }
- 
+
 function removeSet(exId, idx) {
   if (!sessionData[exId]) return;
   sessionData[exId].sets.splice(idx, 1);
   document.getElementById('sets-' + exId).innerHTML = sessionData[exId].sets.map((s, i) => renderSetRow(exId, i, s.reps, s.weight)).join('');
   updateCardDone(exId);
 }
- 
+
 function updateSet(exId, idx, field, value) {
   if (!sessionData[exId]) sessionData[exId] = { sets: [], note: '' };
   while (sessionData[exId].sets.length <= idx) sessionData[exId].sets.push({ reps: '', weight: '' });
   sessionData[exId].sets[idx][field] = value;
   updateCardDone(exId);
 }
- 
+
 function saveNote(exId, value) {
   if (!sessionData[exId]) sessionData[exId] = { sets: [], note: '' };
   sessionData[exId].note = value;
 }
- 
+
 function updateCardDone(exId) {
   const data = sessionData[exId];
   const card = document.getElementById('card-' + exId);
@@ -438,7 +440,7 @@ function updateCardDone(exId) {
   const badge = card.querySelector('.done-badge');
   if (badge) badge.textContent = `✓ ${data ? data.sets.length : 0} series`;
 }
- 
+
 function finishSession(dow) {
   const dia = RUTINA[dow];
   const exercises = dia.ejercicios.map(ex => ({
@@ -459,7 +461,7 @@ function finishSession(dow) {
   showToast('✓ Sesión guardada');
   renderHoy(); renderHistorial(); renderProgreso();
 }
- 
+
 function renderHistorial() {
   const sessions = getSessions();
   const container = document.getElementById('historialContent');
@@ -485,9 +487,9 @@ function renderHistorial() {
     </div>`;
   }).join('');
 }
- 
+
 function toggleSessionItem(i) { document.getElementById('si-' + i).classList.toggle('open'); }
- 
+
 function renderProgreso(filter = '') {
   const sessions = getSessions();
   const container = document.getElementById('progContent');
@@ -501,9 +503,9 @@ function renderProgreso(filter = '') {
     </div>`;
   }).join('') || '<div class="no-data">No se encontraron ejercicios.</div>';
 }
- 
+
 function filterExercises(val) { renderProgreso(val); }
- 
+
 function showExerciseHistory(exId, nombre) {
   const sessions = getSessions();
   const entries = sessions.filter(s => s.exercises.some(e => e.id === exId))
@@ -526,13 +528,13 @@ function showExerciseHistory(exId, nombre) {
   }
   document.getElementById('modalOverlay').classList.add('open');
 }
- 
+
 function closeModal(e) {
   if (!e || e.target === document.getElementById('modalOverlay') || e.currentTarget.tagName === 'BUTTON') {
     document.getElementById('modalOverlay').classList.remove('open');
   }
 }
- 
+
 function exportData() {
   const sessions = getSessions();
   if (sessions.length === 0) { showToast('No hay datos para exportar'); return; }
@@ -545,7 +547,7 @@ function exportData() {
   URL.revokeObjectURL(url);
   showToast('✓ Datos exportados');
 }
- 
+
 function importData(event) {
   const file = event.target.files[0];
   if (!file) return;
@@ -562,7 +564,7 @@ function importData(event) {
   reader.readAsText(file);
   event.target.value = '';
 }
- 
+
 function clearAllData() {
   if (!confirm('¿Seguro? Se borran todas las sesiones. No se puede deshacer.')) return;
   localStorage.removeItem('leito_sessions');
@@ -570,7 +572,7 @@ function clearAllData() {
   renderHoy(); renderHistorial(); renderProgreso();
   showToast('Datos eliminados');
 }
- 
+
 function showToast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg;
@@ -580,4 +582,3 @@ function showToast(msg) {
 </script>
 </body>
 </html>
- 
