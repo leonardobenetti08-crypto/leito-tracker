@@ -22,184 +22,183 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: var(--sans); background: var(--bg); color: var(--text); min-height: 100vh; max-width: 480px; margin: 0 auto; padding-bottom: calc(80px + var(--safe-bottom)); }
 
-/* HEADER */
-.header { padding: calc(var(–safe-top) + 16px) 20px 0; position: sticky; top: 0; background: var(–bg); z-index: 100; border-bottom: 1px solid var(–border); }
-.header-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-.logo { font-family: var(–mono); font-size: 13px; font-weight: 500; color: var(–accent); letter-spacing: 0.08em; text-transform: uppercase; }
-.date-badge { font-family: var(–mono); font-size: 11px; color: var(–muted); background: var(–surface2); padding: 4px 10px; border-radius: 20px; border: 1px solid var(–border); }
-.nav { display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
-.nav::-webkit-scrollbar { display: none; }
-.nav-btn { font-family: var(–sans); font-size: 13px; font-weight: 500; color: var(–muted); background: none; border: none; border-bottom: 2px solid transparent; padding: 12px 16px; cursor: pointer; white-space: nowrap; transition: all 0.15s; }
-.nav-btn.active { color: var(–accent); border-bottom-color: var(–accent); }
+  /* HEADER */
+  .header { padding: calc(var(--safe-top) + 16px) 20px 0; position: sticky; top: 0; background: var(--bg); z-index: 100; border-bottom: 1px solid var(--border); }
+  .header-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+  .logo { font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--accent); letter-spacing: 0.08em; text-transform: uppercase; }
+  .date-badge { font-family: var(--mono); font-size: 11px; color: var(--muted); background: var(--surface2); padding: 4px 10px; border-radius: 20px; border: 1px solid var(--border); }
+  .nav { display: flex; gap: 0; overflow-x: auto; scrollbar-width: none; }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav-btn { font-family: var(--sans); font-size: 13px; font-weight: 500; color: var(--muted); background: none; border: none; border-bottom: 2px solid transparent; padding: 12px 16px; cursor: pointer; white-space: nowrap; transition: all 0.15s; }
+  .nav-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
 
-/* VIEWS */
-.view { display: none; padding: 20px; }
-.view.active { display: block; }
-.session-title { margin-bottom: 4px; }
-.session-title h1 { font-size: 22px; font-weight: 600; }
-.session-subtitle { font-size: 13px; color: var(–muted); margin-bottom: 20px; font-family: var(–mono); }
-.rest-card { background: var(–surface); border: 1px solid var(–border); border-radius: 12px; padding: 32px 20px; text-align: center; }
-.rest-card .rest-icon { font-size: 40px; margin-bottom: 12px; }
-.rest-card h2 { font-size: 18px; font-weight: 500; margin-bottom: 6px; }
-.rest-card p { font-size: 13px; color: var(–muted); }
+  /* VIEWS */
+  .view { display: none; padding: 20px; }
+  .view.active { display: block; }
+  .session-title { margin-bottom: 4px; }
+  .session-title h1 { font-size: 22px; font-weight: 600; }
+  .session-subtitle { font-size: 13px; color: var(--muted); margin-bottom: 20px; font-family: var(--mono); }
+  .rest-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px 20px; text-align: center; }
+  .rest-card .rest-icon { font-size: 40px; margin-bottom: 12px; }
+  .rest-card h2 { font-size: 18px; font-weight: 500; margin-bottom: 6px; }
+  .rest-card p { font-size: 13px; color: var(--muted); }
 
-/* DAY PICKER */
-.day-picker { display: flex; gap: 5px; margin-bottom: 14px; overflow-x: auto; scrollbar-width: none; }
-.day-picker::-webkit-scrollbar { display: none; }
-.day-pick-btn { flex-shrink: 0; font-family: var(–mono); font-size: 11px; font-weight: 500; padding: 7px 10px; border-radius: 8px; border: 1px solid var(–border); background: var(–surface); color: var(–muted); cursor: pointer; -webkit-tap-highlight-color: transparent; transition: all 0.15s; }
-.day-pick-btn.active { background: var(–accent2-dim); border-color: var(–accent2); color: var(–accent2); }
+  /* DAY PICKER */
+  .day-picker { display: flex; gap: 5px; margin-bottom: 14px; overflow-x: auto; scrollbar-width: none; }
+  .day-picker::-webkit-scrollbar { display: none; }
+  .day-pick-btn { flex-shrink: 0; font-family: var(--mono); font-size: 11px; font-weight: 500; padding: 7px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface); color: var(--muted); cursor: pointer; -webkit-tap-highlight-color: transparent; transition: all 0.15s; }
+  .day-pick-btn.active { background: var(--accent2-dim); border-color: var(--accent2); color: var(--accent2); }
 
-/* WEEK STRIP */
-.week-strip { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-bottom: 20px; }
-.week-day { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 7px 4px; border-radius: 8px; background: var(–surface); border: 1px solid var(–border); }
-.week-day.today { border-color: var(–accent2); background: var(–accent2-dim); }
-.week-day.has-session { border-color: var(–accent2); }
-.week-day-name { font-family: var(–mono); font-size: 9px; color: var(–muted); text-transform: uppercase; letter-spacing: 0.05em; }
-.week-day.today .week-day-name { color: var(–accent2); }
-.week-day-num { font-family: var(–mono); font-size: 13px; font-weight: 500; }
-.week-day-dot { width: 4px; height: 4px; border-radius: 50%; background: var(–accent2); visibility: hidden; }
-.week-day.has-session .week-day-dot { visibility: visible; }
+  /* WEEK STRIP */
+  .week-strip { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-bottom: 20px; }
+  .week-day { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 7px 4px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); }
+  .week-day.today { border-color: var(--accent2); background: var(--accent2-dim); }
+  .week-day.has-session { border-color: var(--accent2); }
+  .week-day-name { font-family: var(--mono); font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  .week-day.today .week-day-name { color: var(--accent2); }
+  .week-day-num { font-family: var(--mono); font-size: 13px; font-weight: 500; }
+  .week-day-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--accent2); visibility: hidden; }
+  .week-day.has-session .week-day-dot { visibility: visible; }
 
-/* EXERCISE CARD */
-.exercise-card { background: var(–surface); border: 1px solid var(–border); border-radius: 12px; margin-bottom: 10px; overflow: hidden; transition: border-color 0.15s; }
-.exercise-card.done { border-color: var(–accent2); }
-.exercise-header { display: flex; align-items: center; justify-content: space-between; padding: 13px 16px; cursor: pointer; user-select: none; -webkit-tap-highlight-color: transparent; }
-.exercise-left { flex: 1; }
-.exercise-name { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
-.exercise-right { display: flex; align-items: center; gap: 8px; }
-.done-badge { font-family: var(–mono); font-size: 11px; font-weight: 500; background: var(–accent2-dim); color: var(–accent2); padding: 3px 8px; border-radius: 6px; display: none; }
-.exercise-card.done .done-badge { display: block; }
-.chevron { color: var(–muted); font-size: 14px; line-height: 1; }
-.exercise-body { display: none; padding: 0 14px 14px; border-top: 1px solid var(–border); }
-.exercise-body.open { display: block; }
+  /* EXERCISE CARD */
+  .exercise-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; overflow: hidden; transition: border-color 0.15s; }
+  .exercise-card.done { border-color: var(--accent2); }
+  .exercise-header { display: flex; align-items: center; justify-content: space-between; padding: 13px 16px; cursor: pointer; user-select: none; -webkit-tap-highlight-color: transparent; }
+  .exercise-left { flex: 1; }
+  .exercise-name { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+  .exercise-right { display: flex; align-items: center; gap: 8px; }
+  .done-badge { font-family: var(--mono); font-size: 11px; font-weight: 500; background: var(--accent2-dim); color: var(--accent2); padding: 3px 8px; border-radius: 6px; display: none; }
+  .exercise-card.done .done-badge { display: block; }
+  .chevron { color: var(--muted); font-size: 14px; line-height: 1; }
+  .exercise-body { display: none; padding: 0 14px 14px; border-top: 1px solid var(--border); }
+  .exercise-body.open { display: block; }
 
-/* SETS */
-.sets-header { display: grid; grid-template-columns: 28px 1fr 1fr auto; gap: 6px; padding: 10px 0 5px; font-family: var(–mono); font-size: 10px; font-weight: 500; color: var(–muted); text-transform: uppercase; letter-spacing: 0.06em; }
-.set-block { margin-bottom: 6px; }
-.set-prev { font-family: var(–mono); font-size: 10px; color: var(–muted); padding: 0 0 3px 34px; opacity: 0.7; }
-.set-prev span { color: var(–accent2); opacity: 0.7; }
-.set-row { display: grid; grid-template-columns: 28px 1fr 1fr auto; gap: 6px; align-items: center; }
-.set-num { font-family: var(–mono); font-size: 11px; color: var(–muted); text-align: center; background: var(–surface2); border-radius: 6px; padding: 10px 2px; }
-.set-num.drop { color: var(–accent2); font-size: 9px; }
-.set-input-wrap { display: flex; flex-direction: column; gap: 3px; }
-.set-input { font-family: var(–mono); font-size: 14px; font-weight: 500; color: var(–text); background: var(–surface2); border: 1px solid var(–border); border-radius: 8px; padding: 10px 8px; width: 100%; text-align: center; -webkit-appearance: none; appearance: none; transition: border-color 0.15s; }
-.set-input:focus { outline: none; border-color: var(–accent2); }
-.set-input::placeholder { color: var(–muted); }
-.set-ref-label { text-align: center; font-family: var(–mono); font-size: 9px; color: var(–muted); opacity: 0.6; line-height: 1; }
-.del-set-btn { background: none; border: none; color: var(–muted); cursor: pointer; font-size: 18px; padding: 4px 6px; line-height: 1; -webkit-tap-highlight-color: transparent; }
-.add-set-btn { font-family: var(–mono); font-size: 12px; color: var(–accent2); background: var(–accent2-dim); border: 1px dashed var(–accent2); border-radius: 8px; padding: 8px; width: 100%; cursor: pointer; margin-top: 6px; letter-spacing: 0.03em; -webkit-tap-highlight-color: transparent; }
+  /* SETS */
+  .sets-header { display: grid; grid-template-columns: 28px 1fr 1fr auto; gap: 6px; padding: 10px 0 5px; font-family: var(--mono); font-size: 10px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .set-block { margin-bottom: 6px; }
+  .set-prev { font-family: var(--mono); font-size: 10px; color: var(--muted); padding: 0 0 3px 34px; opacity: 0.7; }
+  .set-prev span { color: var(--accent2); opacity: 0.7; }
+  .set-row { display: grid; grid-template-columns: 28px 1fr 1fr auto; gap: 6px; align-items: center; }
+  .set-num { font-family: var(--mono); font-size: 11px; color: var(--muted); text-align: center; background: var(--surface2); border-radius: 6px; padding: 10px 2px; }
+  .set-num.drop { color: var(--accent2); font-size: 9px; }
+  .set-input-wrap { display: flex; flex-direction: column; gap: 3px; }
+  .set-input { font-family: var(--mono); font-size: 14px; font-weight: 500; color: var(--text); background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 8px; width: 100%; text-align: center; -webkit-appearance: none; appearance: none; transition: border-color 0.15s; }
+  .set-input:focus { outline: none; border-color: var(--accent2); }
+  .set-input::placeholder { color: var(--muted); }
+  .set-ref-label { text-align: center; font-family: var(--mono); font-size: 9px; color: var(--muted); opacity: 0.6; line-height: 1; }
+  .del-set-btn { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 18px; padding: 4px 6px; line-height: 1; -webkit-tap-highlight-color: transparent; }
+  .add-set-btn { font-family: var(--mono); font-size: 12px; color: var(--accent2); background: var(--accent2-dim); border: 1px dashed var(--accent2); border-radius: 8px; padding: 8px; width: 100%; cursor: pointer; margin-top: 6px; letter-spacing: 0.03em; -webkit-tap-highlight-color: transparent; }
 
-/* NOTE */
-.note-area { margin-top: 12px; }
-.note-label { font-family: var(–mono); font-size: 10px; color: var(–muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 5px; }
-.note-input { font-family: var(–sans); font-size: 13px; color: var(–text); background: var(–surface2); border: 1px solid var(–border); border-radius: 8px; padding: 10px 12px; width: 100%; resize: none; height: 60px; }
-.note-input:focus { outline: none; border-color: var(–accent2); }
-.note-input::placeholder { color: var(–muted); }
-.hist-btn { display: inline-flex; align-items: center; gap: 4px; font-family: var(–mono); font-size: 11px; color: var(–accent2); background: none; border: none; cursor: pointer; margin-top: 10px; padding: 0; }
+  /* NOTE */
+  .note-area { margin-top: 12px; }
+  .note-label { font-family: var(--mono); font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 5px; }
+  .note-input { font-family: var(--sans); font-size: 13px; color: var(--text); background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; width: 100%; resize: none; height: 60px; }
+  .note-input:focus { outline: none; border-color: var(--accent2); }
+  .note-input::placeholder { color: var(--muted); }
+  .hist-btn { display: inline-flex; align-items: center; gap: 4px; font-family: var(--mono); font-size: 11px; color: var(--accent2); background: none; border: none; cursor: pointer; margin-top: 10px; padding: 0; }
 
-/* ABS OPCIONAL */
-.abs-card { background: var(–surface); border: 1px dashed var(–border); border-radius: 12px; margin-bottom: 10px; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; -webkit-tap-highlight-color: transparent; transition: border-color 0.15s; }
-.abs-card.checked { border-color: var(–accent); border-style: solid; }
-.abs-card-left { display: flex; align-items: center; gap: 12px; }
-.abs-checkbox { width: 22px; height: 22px; border-radius: 6px; border: 2px solid var(–border); background: var(–surface2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.15s; }
-.abs-card.checked .abs-checkbox { background: var(–accent); border-color: var(–accent); }
-.abs-check-icon { font-size: 13px; color: var(–bg); display: none; }
-.abs-card.checked .abs-check-icon { display: block; }
-.abs-card-name { font-size: 14px; font-weight: 600; }
-.abs-card-sub { font-family: var(–mono); font-size: 11px; color: var(–muted); margin-top: 2px; }
-.abs-badge { font-family: var(–mono); font-size: 10px; color: var(–muted); background: var(–surface2); padding: 3px 8px; border-radius: 6px; border: 1px solid var(–border); }
-.abs-card.checked .abs-badge { color: var(–accent); background: var(–accent-dim); border-color: var(–accent); }
+  /* ABS OPCIONAL */
+  .abs-card { background: var(--surface); border: 1px dashed var(--border); border-radius: 12px; margin-bottom: 10px; padding: 14px 16px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; -webkit-tap-highlight-color: transparent; transition: border-color 0.15s; }
+  .abs-card.checked { border-color: var(--accent); border-style: solid; }
+  .abs-card-left { display: flex; align-items: center; gap: 12px; }
+  .abs-checkbox { width: 22px; height: 22px; border-radius: 6px; border: 2px solid var(--border); background: var(--surface2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all 0.15s; }
+  .abs-card.checked .abs-checkbox { background: var(--accent); border-color: var(--accent); }
+  .abs-check-icon { font-size: 13px; color: var(--bg); display: none; }
+  .abs-card.checked .abs-check-icon { display: block; }
+  .abs-card-name { font-size: 14px; font-weight: 600; }
+  .abs-card-sub { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .abs-badge { font-family: var(--mono); font-size: 10px; color: var(--muted); background: var(--surface2); padding: 3px 8px; border-radius: 6px; border: 1px solid var(--border); }
+  .abs-card.checked .abs-badge { color: var(--accent); background: var(--accent-dim); border-color: var(--accent); }
 
-/* FINISH BTN */
-.finish-btn { display: block; width: 100%; font-family: var(–sans); font-size: 15px; font-weight: 600; color: var(–bg); background: var(–accent); border: none; border-radius: 12px; padding: 16px; cursor: pointer; margin-top: 20px; -webkit-tap-highlight-color: transparent; }
+  /* FINISH BTN */
+  .finish-btn { display: block; width: 100%; font-family: var(--sans); font-size: 15px; font-weight: 600; color: var(--bg); background: var(--accent); border: none; border-radius: 12px; padding: 16px; cursor: pointer; margin-top: 20px; -webkit-tap-highlight-color: transparent; }
 
-/* HISTORIAL */
-.section-label { font-family: var(–mono); font-size: 10px; font-weight: 500; color: var(–muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
-.history-empty { text-align: center; padding: 48px 20px; color: var(–muted); font-size: 14px; }
-.session-item { background: var(–surface); border: 1px solid var(–border); border-radius: 12px; margin-bottom: 10px; overflow: hidden; cursor: pointer; }
-.session-item-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; }
-.session-item-left h3 { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
-.session-item-left p { font-family: var(–mono); font-size: 11px; color: var(–muted); }
-.session-item-right { font-family: var(–mono); font-size: 11px; color: var(–accent2); background: var(–accent2-dim); padding: 4px 10px; border-radius: 6px; }
-.session-item-body { display: none; padding: 0 16px 14px; border-top: 1px solid var(–border); }
-.session-item-body.open { display: block; }
-.session-ex-row { padding: 10px 0; border-bottom: 1px solid var(–border); }
-.session-ex-row:last-child { border-bottom: none; }
-.session-ex-name { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
-.session-sets-list { font-family: var(–mono); font-size: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
-.session-set-chip { background: var(–surface2); padding: 3px 8px; border-radius: 6px; border: 1px solid var(–border); color: var(–text); }
-.session-note { font-size: 12px; color: var(–muted); margin-top: 6px; font-style: italic; }
+  /* HISTORIAL */
+  .section-label { font-family: var(--mono); font-size: 10px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 12px; }
+  .history-empty { text-align: center; padding: 48px 20px; color: var(--muted); font-size: 14px; }
+  .session-item { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; overflow: hidden; cursor: pointer; }
+  .session-item-header { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; }
+  .session-item-left h3 { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+  .session-item-left p { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .session-item-right { font-family: var(--mono); font-size: 11px; color: var(--accent2); background: var(--accent2-dim); padding: 4px 10px; border-radius: 6px; }
+  .session-item-body { display: none; padding: 0 16px 14px; border-top: 1px solid var(--border); }
+  .session-item-body.open { display: block; }
+  .session-ex-row { padding: 10px 0; border-bottom: 1px solid var(--border); }
+  .session-ex-row:last-child { border-bottom: none; }
+  .session-ex-name { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+  .session-sets-list { font-family: var(--mono); font-size: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .session-set-chip { background: var(--surface2); padding: 3px 8px; border-radius: 6px; border: 1px solid var(--border); color: var(--text); }
+  .session-note { font-size: 12px; color: var(--muted); margin-top: 6px; font-style: italic; }
 
-/* PROGRESO */
-.prog-search { font-family: var(–sans); font-size: 14px; color: var(–text); background: var(–surface); border: 1px solid var(–border); border-radius: 10px; padding: 12px 14px; width: 100%; margin-bottom: 16px; }
-.prog-search:focus { outline: none; border-color: var(–accent2); }
-.prog-search::placeholder { color: var(–muted); }
-.ex-list-item { display: flex; justify-content: space-between; align-items: center; background: var(–surface); border: 1px solid var(–border); border-radius: 10px; padding: 12px 14px; margin-bottom: 8px; cursor: pointer; }
-.ex-list-name { font-size: 13px; font-weight: 500; }
-.ex-list-day { font-family: var(–mono); font-size: 11px; color: var(–muted); }
-.ex-list-count { font-family: var(–mono); font-size: 11px; color: var(–accent2); background: var(–accent2-dim); padding: 3px 8px; border-radius: 6px; }
+  /* PROGRESO */
+  .prog-search { font-family: var(--sans); font-size: 14px; color: var(--text); background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; width: 100%; margin-bottom: 16px; }
+  .prog-search:focus { outline: none; border-color: var(--accent2); }
+  .prog-search::placeholder { color: var(--muted); }
+  .ex-list-item { display: flex; justify-content: space-between; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-bottom: 8px; cursor: pointer; }
+  .ex-list-name { font-size: 13px; font-weight: 500; }
+  .ex-list-day { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .ex-list-count { font-family: var(--mono); font-size: 11px; color: var(--accent2); background: var(--accent2-dim); padding: 3px 8px; border-radius: 6px; }
 
-/* AJUSTES */
-.settings-card { background: var(–surface); border: 1px solid var(–border); border-radius: 12px; padding: 16px; margin-bottom: 16px; }
-.settings-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
-.settings-card p { font-size: 13px; color: var(–muted); margin-bottom: 14px; line-height: 1.5; }
-.settings-btn { display: block; width: 100%; font-family: var(–sans); font-size: 14px; font-weight: 500; padding: 12px 16px; border-radius: 10px; border: 1px solid var(–border); cursor: pointer; text-align: center; margin-bottom: 8px; background: var(–surface2); color: var(–text); -webkit-tap-highlight-color: transparent; }
-.settings-btn.export { color: var(–accent2); border-color: var(–accent2); background: var(–accent2-dim); }
-.settings-btn.danger { color: var(–red); border-color: var(–red); background: #ff5f5715; }
-.install-steps { background: var(–surface2); border-radius: 10px; padding: 14px; }
-.install-step { display: flex; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(–border); align-items: flex-start; }
-.install-step:last-child { border-bottom: none; }
-.step-num { font-family: var(–mono); font-size: 11px; color: var(–accent2); background: var(–accent2-dim); border-radius: 6px; padding: 2px 7px; flex-shrink: 0; margin-top: 1px; }
-.step-text { font-size: 13px; color: var(–muted); line-height: 1.5; }
-.step-text strong { color: var(–text); }
+  /* AJUSTES */
+  .settings-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+  .settings-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+  .settings-card p { font-size: 13px; color: var(--muted); margin-bottom: 14px; line-height: 1.5; }
+  .settings-btn { display: block; width: 100%; font-family: var(--sans); font-size: 14px; font-weight: 500; padding: 12px 16px; border-radius: 10px; border: 1px solid var(--border); cursor: pointer; text-align: center; margin-bottom: 8px; background: var(--surface2); color: var(--text); -webkit-tap-highlight-color: transparent; }
+  .settings-btn.export { color: var(--accent2); border-color: var(--accent2); background: var(--accent2-dim); }
+  .settings-btn.danger { color: var(--red); border-color: var(--red); background: #ff5f5715; }
+  .install-steps { background: var(--surface2); border-radius: 10px; padding: 14px; }
+  .install-step { display: flex; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .install-step:last-child { border-bottom: none; }
+  .step-num { font-family: var(--mono); font-size: 11px; color: var(--accent2); background: var(--accent2-dim); border-radius: 6px; padding: 2px 7px; flex-shrink: 0; margin-top: 1px; }
+  .step-text { font-size: 13px; color: var(--muted); line-height: 1.5; }
+  .step-text strong { color: var(--text); }
 
-/* MODAL */
-.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 200; backdrop-filter: blur(4px); overflow-y: auto; padding: 20px; }
-.modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; padding-top: 60px; }
-.modal { background: var(–surface); border: 1px solid var(–border); border-radius: 16px; width: 100%; max-width: 440px; overflow: hidden; animation: slideUp 0.2s ease; }
-@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-.modal-header { display: flex; justify-content: space-between; align-items: flex-start; padding: 20px; border-bottom: 1px solid var(–border); }
-.modal-title { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
-.modal-sub { font-family: var(–mono); font-size: 11px; color: var(–muted); }
-.modal-close { background: var(–surface2); border: 1px solid var(–border); color: var(–muted); font-size: 18px; width: 32px; height: 32px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-left: 12px; }
-.modal-body { padding: 16px 20px 20px; }
-.prog-entry { background: var(–surface2); border: 1px solid var(–border); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; }
-.prog-entry-date { font-family: var(–mono); font-size: 11px; color: var(–muted); margin-bottom: 8px; }
-.prog-entry-sets { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
-.prog-set-chip { font-family: var(–mono); font-size: 12px; background: var(–surface); border: 1px solid var(–border); border-radius: 6px; padding: 4px 10px; color: var(–text); }
-.prog-note { font-size: 12px; color: var(–muted); font-style: italic; margin-top: 4px; }
-.no-data { font-size: 13px; color: var(–muted); text-align: center; padding: 24px 0; }
+  /* MODAL */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.8); z-index: 200; backdrop-filter: blur(4px); overflow-y: auto; padding: 20px; }
+  .modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; padding-top: 60px; }
+  .modal { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; width: 100%; max-width: 440px; overflow: hidden; animation: slideUp 0.2s ease; }
+  @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+  .modal-header { display: flex; justify-content: space-between; align-items: flex-start; padding: 20px; border-bottom: 1px solid var(--border); }
+  .modal-title { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
+  .modal-sub { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+  .modal-close { background: var(--surface2); border: 1px solid var(--border); color: var(--muted); font-size: 18px; width: 32px; height: 32px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-left: 12px; }
+  .modal-body { padding: 16px 20px 20px; }
+  .prog-entry { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin-bottom: 10px; }
+  .prog-entry-date { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-bottom: 8px; }
+  .prog-entry-sets { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+  .prog-set-chip { font-family: var(--mono); font-size: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; color: var(--text); }
+  .prog-note { font-size: 12px; color: var(--muted); font-style: italic; margin-top: 4px; }
+  .no-data { font-size: 13px; color: var(--muted); text-align: center; padding: 24px 0; }
 
-/* TOAST */
-.toast { position: fixed; bottom: calc(90px + var(–safe-bottom)); left: 50%; transform: translateX(-50%) translateY(20px); background: var(–accent); color: var(–bg); font-family: var(–mono); font-size: 13px; font-weight: 500; padding: 10px 20px; border-radius: 20px; opacity: 0; transition: all 0.3s; pointer-events: none; white-space: nowrap; z-index: 300; }
-.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  /* TOAST */
+  .toast { position: fixed; bottom: calc(90px + var(--safe-bottom)); left: 50%; transform: translateX(-50%) translateY(20px); background: var(--accent); color: var(--bg); font-family: var(--mono); font-size: 13px; font-weight: 500; padding: 10px 20px; border-radius: 20px; opacity: 0; transition: all 0.3s; pointer-events: none; white-space: nowrap; z-index: 300; }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-/* DIETA */
-.dieta-toggle { display: flex; gap: 6px; margin-bottom: 20px; }
-.dieta-toggle-btn { flex: 1; font-family: var(–mono); font-size: 12px; font-weight: 500; padding: 10px; border-radius: 10px; border: 1px solid var(–border); background: var(–surface); color: var(–muted); cursor: pointer; text-align: center; -webkit-tap-highlight-color: transparent; transition: all 0.15s; }
-.dieta-toggle-btn.active { background: var(–accent); color: #000; border-color: var(–accent); }
-.dieta-section-label { font-family: var(–mono); font-size: 10px; font-weight: 500; color: var(–muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; margin-top: 18px; }
-.macro-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 4px; }
-.macro-card { background: var(–surface); border: 1px solid var(–border); border-radius: 10px; padding: 12px 8px; text-align: center; }
-.macro-val { font-family: var(–mono); font-size: 18px; font-weight: 500; color: var(–accent); }
-.macro-unit { font-family: var(–mono); font-size: 10px; color: var(–muted); }
-.macro-label { font-size: 11px; color: var(–muted); margin-top: 3px; }
-.meal-card { background: var(–surface); border: 1px solid var(–border); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; }
-.meal-tag { display: inline-block; font-family: var(–mono); font-size: 10px; font-weight: 500; padding: 3px 10px; border-radius: 6px; margin-bottom: 10px; }
-.meal-tag.desayuno { background: #1a2a3a; color: #6ab4ff; }
-.meal-tag.almuerzo { background: #1a2e1a; color: #6fc96f; }
-.meal-tag.pre { background: #2e2a14; color: var(–accent); }
-.meal-tag.cena { background: #2a1a2e; color: #c084fc; }
-.meal-tag.colacion { background: #2e2a14; color: var(–accent2); }
-.meal-item { font-size: 13px; color: var(–muted); padding: 5px 0; border-bottom: 1px solid var(–border); line-height: 1.4; }
-.meal-item:last-child { border-bottom: none; }
-.dieta-rule-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px; }
-.dieta-rule { background: var(–surface); border: 1px solid var(–border); border-radius: 10px; padding: 10px 12px; }
-.dieta-rule strong { display: block; font-size: 12px; font-weight: 600; color: var(–accent2); margin-bottom: 3px; }
-.dieta-rule span { font-size: 12px; color: var(–muted); line-height: 1.4; }
-#importInput { display: none; }
+  /* DIETA */
+  .dieta-toggle { display: flex; gap: 6px; margin-bottom: 20px; }
+  .dieta-toggle-btn { flex: 1; font-family: var(--mono); font-size: 12px; font-weight: 500; padding: 10px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); color: var(--muted); cursor: pointer; text-align: center; -webkit-tap-highlight-color: transparent; transition: all 0.15s; }
+  .dieta-toggle-btn.active { background: var(--accent); color: #000; border-color: var(--accent); }
+  .dieta-section-label { font-family: var(--mono); font-size: 10px; font-weight: 500; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; margin-top: 18px; }
+  .macro-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 4px; }
+  .macro-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 8px; text-align: center; }
+  .macro-val { font-family: var(--mono); font-size: 18px; font-weight: 500; color: var(--accent); }
+  .macro-unit { font-family: var(--mono); font-size: 10px; color: var(--muted); }
+  .macro-label { font-size: 11px; color: var(--muted); margin-top: 3px; }
+  .meal-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; }
+  .meal-tag { display: inline-block; font-family: var(--mono); font-size: 10px; font-weight: 500; padding: 3px 10px; border-radius: 6px; margin-bottom: 10px; }
+  .meal-tag.desayuno { background: #1a2a3a; color: #6ab4ff; }
+  .meal-tag.almuerzo { background: #1a2e1a; color: #6fc96f; }
+  .meal-tag.pre { background: #2e2a14; color: var(--accent); }
+  .meal-tag.cena { background: #2a1a2e; color: #c084fc; }
+  .meal-tag.colacion { background: #2e2a14; color: var(--accent2); }
+  .meal-item { font-size: 13px; color: var(--muted); padding: 5px 0; border-bottom: 1px solid var(--border); line-height: 1.4; }
+  .meal-item:last-child { border-bottom: none; }
+  .dieta-rule-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px; }
+  .dieta-rule { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; }
+  .dieta-rule strong { display: block; font-size: 12px; font-weight: 600; color: var(--accent2); margin-bottom: 3px; }
+  .dieta-rule span { font-size: 12px; color: var(--muted); line-height: 1.4; }
+  #importInput { display: none; }
 </style>
-
 </head>
 <body>
 
@@ -449,293 +448,382 @@ function renderHoy() {
         <div class="note-area">
           <div class="note-label">Notas / sensaciones</div>
           <textarea class="note-input" id="note-${ex.id}" placeholder="Sensaciones, técnica, próxima sesión..." oninput="saveNote('${ex.id}', this.value)">${data.note || ''}</textarea>
+        </div>
+        <button class="hist-btn" onclick="showExerciseHistory('${ex.id}', '${ex.nombre}')">↗ Ver historial de este ejercicio</button>
+      </div>
+    </div>`;
+  });
 
-```
+  // Abs opcional
+  if (dia.absOpcional) {
+    const absChecked = absData[selectedDateKey] || false;
+    html += `<div class="abs-card ${absChecked ? 'checked' : ''}" id="abs-card" onclick="toggleAbs('${selectedDateKey}')">
+      <div class="abs-card-left">
+        <div class="abs-checkbox"><span class="abs-check-icon">✓</span></div>
+        <div>
+          <div class="abs-card-name">Abs</div>
+          <div class="abs-card-sub">Opcional — marca si hiciste</div>
+        </div>
+      </div>
+      <span class="abs-badge">${absChecked ? '✓ hecho' : 'opcional'}</span>
+    </div>`;
+  }
+
+  html += `<button class="finish-btn" onclick="finishSession(${dow})">Guardar sesión completa</button>`;
+  container.innerHTML = html;
+}
+
+function renderSetRow(exId, idx, kg = '', reps = '', setDef = {}, prev = null) {
+  const isLast = true; // handled by label
+  const isDrop = setDef.drop;
+  const label = setDef.label || (isDrop ? 'drop' : String(idx + 1));
+  const numLabel = isDrop ? `<div class="set-num drop">drop</div>` : `<div class="set-num">${label}</div>`;
+  const refLabel = setDef.ref ? `<span class="set-ref-label">${setDef.ref}</span>` : '';
+  const prevHtml = prev
+    ? `<div class="set-prev">Prev: <span>${prev.kg || '—'} kg × ${prev.reps || '—'}</span></div>`
+    : '';
+  return `<div class="set-block">
+    ${prevHtml}
+    <div class="set-row" id="setrow-${exId}-${idx}">
+      ${numLabel}
+      <div class="set-input-wrap">
+        <input class="set-input" type="text" inputmode="decimal" placeholder="—" value="${kg}" onchange="updateSet('${exId}', ${idx}, 'kg', this.value)">
+      </div>
+      <div class="set-input-wrap">
+        ${refLabel}
+        <input class="set-input" type="text" inputmode="decimal" placeholder="—" value="${reps}" onchange="updateSet('${exId}', ${idx}, 'reps', this.value)">
+      </div>
+      <button class="del-set-btn" onclick="removeSet('${exId}', ${idx})">×</button>
     </div>
-    <button class="hist-btn" onclick="showExerciseHistory('${ex.id}', '${ex.nombre}')">↗ Ver historial de este ejercicio</button>
-  </div>
-</div>`;
-```
-
-});
-
-// Abs opcional
-if (dia.absOpcional) {
-const absChecked = absData[selectedDateKey] || false;
-html += `<div class="abs-card ${absChecked ? 'checked' : ''}" id="abs-card" onclick="toggleAbs('${selectedDateKey}')"> <div class="abs-card-left"> <div class="abs-checkbox"><span class="abs-check-icon">✓</span></div> <div> <div class="abs-card-name">Abs</div> <div class="abs-card-sub">Opcional — marca si hiciste</div> </div> </div> <span class="abs-badge">${absChecked ? '✓ hecho' : 'opcional'}</span> </div>`;
-}
-
-html += `<button class="finish-btn" onclick="finishSession(${dow})">Guardar sesión completa</button>`;
-container.innerHTML = html;
-}
-
-function renderSetRow(exId, idx, kg = ‘’, reps = ‘’, setDef = {}, prev = null) {
-const isLast = true; // handled by label
-const isDrop = setDef.drop;
-const label = setDef.label || (isDrop ? ‘drop’ : String(idx + 1));
-const numLabel = isDrop ? `<div class="set-num drop">drop</div>` : `<div class="set-num">${label}</div>`;
-const refLabel = setDef.ref ? `<span class="set-ref-label">${setDef.ref}</span>` : ‘’;
-const prevHtml = prev
-? `<div class="set-prev">Prev: <span>${prev.kg || '—'} kg × ${prev.reps || '—'}</span></div>`
-: ‘’;
-return `<div class="set-block">
-${prevHtml}
-<div class="set-row" id="setrow-${exId}-${idx}">
-${numLabel}
-<div class="set-input-wrap">
-<input class="set-input" type="text" inputmode="decimal" placeholder="—" value="${kg}" onchange="updateSet('${exId}', ${idx}, 'kg', this.value)">
-</div>
-<div class="set-input-wrap">
-${refLabel}
-<input class="set-input" type="text" inputmode="decimal" placeholder="—" value="${reps}" onchange="updateSet('${exId}', ${idx}, 'reps', this.value)">
-</div>
-<button class="del-set-btn" onclick="removeSet('${exId}', ${idx})">×</button>
-</div>
-
   </div>`;
 }
 
 function toggleExercise(id) {
-if (openExercises.has(id)) openExercises.delete(id);
-else openExercises.add(id);
-document.getElementById(‘body-’ + id).classList.toggle(‘open’);
-document.getElementById(‘card-’ + id).querySelector(’.chevron’).textContent = openExercises.has(id) ? ‘▲’ : ‘▼’;
+  if (openExercises.has(id)) openExercises.delete(id);
+  else openExercises.add(id);
+  document.getElementById('body-' + id).classList.toggle('open');
+  document.getElementById('card-' + id).querySelector('.chevron').textContent = openExercises.has(id) ? '▲' : '▼';
 }
 
 function addSet(exId) {
-if (!sessionData[exId]) sessionData[exId] = { sets: [], note: ‘’ };
-sessionData[exId].sets.push({ kg: ‘’, reps: ‘’ });
-const idx = sessionData[exId].sets.length - 1;
-const exDef = ALL_EXERCISES.find(e => e.id === exId);
-const setDef = exDef ? (exDef.sets[idx] || exDef.sets[exDef.sets.length - 1]) : {};
-const prevSession = getPrevSession(exId);
-const prev = prevSession ? prevSession.sets[idx] : null;
-document.getElementById(‘sets-’ + exId).insertAdjacentHTML(‘beforeend’, renderSetRow(exId, idx, ‘’, ‘’, setDef, prev));
-updateCardDone(exId);
+  if (!sessionData[exId]) sessionData[exId] = { sets: [], note: '' };
+  sessionData[exId].sets.push({ kg: '', reps: '' });
+  const idx = sessionData[exId].sets.length - 1;
+  const exDef = ALL_EXERCISES.find(e => e.id === exId);
+  const setDef = exDef ? (exDef.sets[idx] || exDef.sets[exDef.sets.length - 1]) : {};
+  const prevSession = getPrevSession(exId);
+  const prev = prevSession ? prevSession.sets[idx] : null;
+  document.getElementById('sets-' + exId).insertAdjacentHTML('beforeend', renderSetRow(exId, idx, '', '', setDef, prev));
+  updateCardDone(exId);
 }
 
 function removeSet(exId, idx) {
-if (!sessionData[exId]) return;
-sessionData[exId].sets.splice(idx, 1);
-const exDef = ALL_EXERCISES.find(e => e.id === exId);
-const prevSession = getPrevSession(exId);
-document.getElementById(‘sets-’ + exId).innerHTML = sessionData[exId].sets.map((s, i) => {
-const setDef = exDef ? (exDef.sets[i] || exDef.sets[exDef.sets.length - 1]) : {};
-const prev = prevSession ? prevSession.sets[i] : null;
-return renderSetRow(exId, i, s.kg, s.reps, setDef, prev);
-}).join(’’);
-updateCardDone(exId);
+  if (!sessionData[exId]) return;
+  sessionData[exId].sets.splice(idx, 1);
+  const exDef = ALL_EXERCISES.find(e => e.id === exId);
+  const prevSession = getPrevSession(exId);
+  document.getElementById('sets-' + exId).innerHTML = sessionData[exId].sets.map((s, i) => {
+    const setDef = exDef ? (exDef.sets[i] || exDef.sets[exDef.sets.length - 1]) : {};
+    const prev = prevSession ? prevSession.sets[i] : null;
+    return renderSetRow(exId, i, s.kg, s.reps, setDef, prev);
+  }).join('');
+  updateCardDone(exId);
 }
 
 function updateSet(exId, idx, field, value) {
-if (!sessionData[exId]) sessionData[exId] = { sets: [], note: ‘’ };
-while (sessionData[exId].sets.length <= idx) sessionData[exId].sets.push({ kg: ‘’, reps: ‘’ });
-sessionData[exId].sets[idx][field] = value;
-updateCardDone(exId);
+  if (!sessionData[exId]) sessionData[exId] = { sets: [], note: '' };
+  while (sessionData[exId].sets.length <= idx) sessionData[exId].sets.push({ kg: '', reps: '' });
+  sessionData[exId].sets[idx][field] = value;
+  updateCardDone(exId);
 }
 
 function saveNote(exId, value) {
-if (!sessionData[exId]) sessionData[exId] = { sets: [], note: ‘’ };
-sessionData[exId].note = value;
+  if (!sessionData[exId]) sessionData[exId] = { sets: [], note: '' };
+  sessionData[exId].note = value;
 }
 
 function updateCardDone(exId) {
-const data = sessionData[exId];
-const card = document.getElementById(‘card-’ + exId);
-if (!card) return;
-const done = data && data.sets.some(s => s.kg || s.reps);
-card.classList.toggle(‘done’, done);
+  const data = sessionData[exId];
+  const card = document.getElementById('card-' + exId);
+  if (!card) return;
+  const done = data && data.sets.some(s => s.kg || s.reps);
+  card.classList.toggle('done', done);
 }
 
 function toggleAbs(dateKey) {
-absData[dateKey] = !absData[dateKey];
-const card = document.getElementById(‘abs-card’);
-if (!card) return;
-card.classList.toggle(‘checked’, absData[dateKey]);
-card.querySelector(’.abs-badge’).textContent = absData[dateKey] ? ‘✓ hecho’ : ‘opcional’;
-card.querySelector(’.abs-check-icon’).style.display = absData[dateKey] ? ‘block’ : ‘none’;
+  absData[dateKey] = !absData[dateKey];
+  const card = document.getElementById('abs-card');
+  if (!card) return;
+  card.classList.toggle('checked', absData[dateKey]);
+  card.querySelector('.abs-badge').textContent = absData[dateKey] ? '✓ hecho' : 'opcional';
+  card.querySelector('.abs-check-icon').style.display = absData[dateKey] ? 'block' : 'none';
 }
 
 function finishSession(dow) {
-const dia = RUTINA[dow];
-const exercises = dia.ejercicios.map(ex => ({
-id: ex.id, nombre: ex.nombre,
-sets: (sessionData[ex.id] || {}).sets || [],
-note: (sessionData[ex.id] || {}).note || ‘’
-})).filter(e => e.sets.some(s => s.kg || s.reps));
+  const dia = RUTINA[dow];
+  const exercises = dia.ejercicios.map(ex => ({
+    id: ex.id, nombre: ex.nombre,
+    sets: (sessionData[ex.id] || {}).sets || [],
+    note: (sessionData[ex.id] || {}).note || ''
+  })).filter(e => e.sets.some(s => s.kg || s.reps));
 
-const selectedDateKey = getSelectedDateKey();
-const absHecho = absData[selectedDateKey] || false;
+  const selectedDateKey = getSelectedDateKey();
+  const absHecho = absData[selectedDateKey] || false;
 
-if (exercises.length === 0 && !absHecho) {
-showToast(‘Registra al menos una serie primero’);
-return;
+  if (exercises.length === 0 && !absHecho) {
+    showToast('Registra al menos una serie primero');
+    return;
+  }
+
+  const sessions = getSessions();
+  const existing = sessions.findIndex(s => s.date === selectedDateKey);
+  const session = { date: selectedDateKey, dia: dia.nombre, foco: dia.foco, exercises, absHecho };
+  if (existing >= 0) sessions[existing] = session;
+  else sessions.unshift(session);
+
+  saveSessions(sessions);
+  sessionData = {};
+  openExercises.clear();
+  showToast('✓ Sesión guardada');
+  renderHoy(); renderHistorial(); renderProgreso();
 }
 
-const sessions = getSessions();
-const existing = sessions.findIndex(s => s.date === selectedDateKey);
-const session = { date: selectedDateKey, dia: dia.nombre, foco: dia.foco, exercises, absHecho };
-if (existing >= 0) sessions[existing] = session;
-else sessions.unshift(session);
-
-saveSessions(sessions);
-sessionData = {};
-openExercises.clear();
-showToast(‘✓ Sesión guardada’);
-renderHoy(); renderHistorial(); renderProgreso();
-}
 
 // ─── DIETA ────────────────────────────────────────────────────────────────────
-let dietaTipo = null; // ‘entreno’ | ‘descanso’
+let dietaTipo = null; // 'entreno' | 'descanso'
 
 function initDieta() {
-const dow = selectedDow;
-const dia = RUTINA[dow];
-dietaTipo = dia.tipo === ‘entreno’ ? ‘entreno’ : ‘descanso’;
-renderDieta();
+  const dow = selectedDow;
+  const dia = RUTINA[dow];
+  dietaTipo = dia.tipo === 'entreno' ? 'entreno' : 'descanso';
+  renderDieta();
 }
 
 function setDietaTipo(tipo) {
-dietaTipo = tipo;
-renderDieta();
+  dietaTipo = tipo;
+  renderDieta();
 }
 
 function renderDieta() {
-const container = document.getElementById(‘dietaContent’);
-const esEntreno = dietaTipo === ‘entreno’;
+  const container = document.getElementById('dietaContent');
+  const esEntreno = dietaTipo === 'entreno';
 
-const toggleHtml = `<div class="dieta-toggle">
-<button class="dieta-toggle-btn ${esEntreno ? 'active' : ''}" onclick="setDietaTipo('entreno')">Día entreno</button>
-<button class="dieta-toggle-btn ${!esEntreno ? 'active' : ''}" onclick="setDietaTipo('descanso')">Día descanso</button>
-
+  const toggleHtml = `<div class="dieta-toggle">
+    <button class="dieta-toggle-btn ${esEntreno ? 'active' : ''}" onclick="setDietaTipo('entreno')">Día entreno</button>
+    <button class="dieta-toggle-btn ${!esEntreno ? 'active' : ''}" onclick="setDietaTipo('descanso')">Día descanso</button>
   </div>`;
 
-const macros = esEntreno
-? { kcal: ‘3200’, prot: ‘~150’, carbs: ‘~440’, grasas: ‘~93’ }
-: { kcal: ‘2800’, prot: ‘~150’, carbs: ‘~330’, grasas: ‘~85’ };
+  const macros = esEntreno
+    ? { kcal: '3200', prot: '~150', carbs: '~440', grasas: '~93' }
+    : { kcal: '2800', prot: '~150', carbs: '~330', grasas: '~85' };
 
-const macroHtml = ` <div class="dieta-section-label">Macros del día</div> <div class="macro-grid"> <div class="macro-card"><div class="macro-val">${macros.kcal}</div><div class="macro-unit">kcal</div><div class="macro-label">Calorías</div></div> <div class="macro-card"><div class="macro-val">${macros.prot}</div><div class="macro-unit">g</div><div class="macro-label">Proteína</div></div> <div class="macro-card"><div class="macro-val">${macros.carbs}</div><div class="macro-unit">g</div><div class="macro-label">Carbos</div></div> <div class="macro-card"><div class="macro-val">${macros.grasas}</div><div class="macro-unit">g</div><div class="macro-label">Grasas</div></div> </div>`;
+  const macroHtml = `
+    <div class="dieta-section-label">Macros del día</div>
+    <div class="macro-grid">
+      <div class="macro-card"><div class="macro-val">${macros.kcal}</div><div class="macro-unit">kcal</div><div class="macro-label">Calorías</div></div>
+      <div class="macro-card"><div class="macro-val">${macros.prot}</div><div class="macro-unit">g</div><div class="macro-label">Proteína</div></div>
+      <div class="macro-card"><div class="macro-val">${macros.carbs}</div><div class="macro-unit">g</div><div class="macro-label">Carbos</div></div>
+      <div class="macro-card"><div class="macro-val">${macros.grasas}</div><div class="macro-unit">g</div><div class="macro-label">Grasas</div></div>
+    </div>`;
 
-let comidas = ‘’;
-if (esEntreno) {
-comidas = ` <div class="dieta-section-label">Comidas</div> <div class="meal-card"> <span class="meal-tag desayuno">Desayuno</span> <div class="meal-item">3 huevos enteros + 15g mantequilla de maní</div> <div class="meal-item">3 panes de molde + 60g avena</div> <div class="meal-item">150g yogurt proteína + 80g arándanos</div> <div class="meal-item">Café + 150ml leche descremada</div> </div> <div class="meal-card"> <span class="meal-tag almuerzo">Almuerzo</span> <div class="meal-item">170g pollo / carne magra / pescado</div> <div class="meal-item">200g arroz cocido (o equivalente)</div> <div class="meal-item">Verduras libres · 70g palta (opcional)</div> <div class="meal-item">15g aceite de oliva</div> </div> <div class="meal-card"> <span class="meal-tag pre">Pre-entreno</span> <div class="meal-item">90g corn flakes + 300ml leche descremada</div> <div class="meal-item">1 plátano</div> </div> <div class="meal-card"> <span class="meal-tag cena">Cena (post-entreno)</span> <div class="meal-item">200g pollo / carne / pescado</div> <div class="meal-item">300g arroz cocido (o equivalente)</div> <div class="meal-item">Verduras libres</div> <div class="meal-item">18g aceite de oliva</div> </div>`;
-} else {
-comidas = ` <div class="dieta-section-label">Comidas</div> <div class="meal-card"> <span class="meal-tag desayuno">Desayuno</span> <div class="meal-item">3 huevos enteros + 15g mantequilla de maní</div> <div class="meal-item">3 panes de molde + 60g avena</div> <div class="meal-item">150g yogurt proteína + 80g arándanos</div> <div class="meal-item">Café + 150ml leche descremada</div> </div> <div class="meal-card"> <span class="meal-tag almuerzo">Almuerzo</span> <div class="meal-item">170–180g proteína</div> <div class="meal-item">130–150g arroz cocido (o equivalente)</div> <div class="meal-item">Verduras libres · 50g palta</div> <div class="meal-item">15g aceite de oliva</div> </div> <div class="meal-card"> <span class="meal-tag colacion">Colación</span> <div class="meal-item">Opción 1: 60g corn flakes + 250ml leche descremada + 1 plátano</div> <div class="meal-item">Opción 2: 1 yogurt proteína + 40–50g avena + 1 plátano</div> </div> <div class="meal-card"> <span class="meal-tag cena">Cena</span> <div class="meal-item">180–200g proteína</div> <div class="meal-item">180–200g arroz / 220–250g fideos cocidos / 300g papas cocidas</div> <div class="meal-item">Verduras libres</div> <div class="meal-item">18g aceite de oliva</div> </div>`;
-}
+  let comidas = '';
+  if (esEntreno) {
+    comidas = `
+      <div class="dieta-section-label">Comidas</div>
+      <div class="meal-card">
+        <span class="meal-tag desayuno">Desayuno</span>
+        <div class="meal-item">3 huevos enteros + 15g mantequilla de maní</div>
+        <div class="meal-item">3 panes de molde + 60g avena</div>
+        <div class="meal-item">150g yogurt proteína + 80g arándanos</div>
+        <div class="meal-item">Café + 150ml leche descremada</div>
+      </div>
+      <div class="meal-card">
+        <span class="meal-tag almuerzo">Almuerzo</span>
+        <div class="meal-item">170g pollo / carne magra / pescado</div>
+        <div class="meal-item">200g arroz cocido (o equivalente)</div>
+        <div class="meal-item">Verduras libres · 70g palta (opcional)</div>
+        <div class="meal-item">15g aceite de oliva</div>
+      </div>
+      <div class="meal-card">
+        <span class="meal-tag pre">Pre-entreno</span>
+        <div class="meal-item">90g corn flakes + 300ml leche descremada</div>
+        <div class="meal-item">1 plátano</div>
+      </div>
+      <div class="meal-card">
+        <span class="meal-tag cena">Cena (post-entreno)</span>
+        <div class="meal-item">200g pollo / carne / pescado</div>
+        <div class="meal-item">300g arroz cocido (o equivalente)</div>
+        <div class="meal-item">Verduras libres</div>
+        <div class="meal-item">18g aceite de oliva</div>
+      </div>`;
+  } else {
+    comidas = `
+      <div class="dieta-section-label">Comidas</div>
+      <div class="meal-card">
+        <span class="meal-tag desayuno">Desayuno</span>
+        <div class="meal-item">3 huevos enteros + 15g mantequilla de maní</div>
+        <div class="meal-item">3 panes de molde + 60g avena</div>
+        <div class="meal-item">150g yogurt proteína + 80g arándanos</div>
+        <div class="meal-item">Café + 150ml leche descremada</div>
+      </div>
+      <div class="meal-card">
+        <span class="meal-tag almuerzo">Almuerzo</span>
+        <div class="meal-item">170–180g proteína</div>
+        <div class="meal-item">130–150g arroz cocido (o equivalente)</div>
+        <div class="meal-item">Verduras libres · 50g palta</div>
+        <div class="meal-item">15g aceite de oliva</div>
+      </div>
+      <div class="meal-card">
+        <span class="meal-tag colacion">Colación</span>
+        <div class="meal-item">Opción 1: 60g corn flakes + 250ml leche descremada + 1 plátano</div>
+        <div class="meal-item">Opción 2: 1 yogurt proteína + 40–50g avena + 1 plátano</div>
+      </div>
+      <div class="meal-card">
+        <span class="meal-tag cena">Cena</span>
+        <div class="meal-item">180–200g proteína</div>
+        <div class="meal-item">180–200g arroz / 220–250g fideos cocidos / 300g papas cocidas</div>
+        <div class="meal-item">Verduras libres</div>
+        <div class="meal-item">18g aceite de oliva</div>
+      </div>`;
+  }
 
-const reglas = ` <div class="dieta-section-label">Reglas</div> <div class="dieta-rule-grid"> <div class="dieta-rule"><strong>Pesaje</strong><span>Diario en ayunas · promedio semanal</span></div> <div class="dieta-rule"><strong>Proteína</strong><span>Constante todos los días</span></div> <div class="dieta-rule"><strong>Subir calorías</strong><span>Menos de 200g/semana</span></div> <div class="dieta-rule"><strong>Bajar calorías</strong><span>Más de 400–500g/semana</span></div> <div class="dieta-rule"><strong>Aceites</strong><span>Controlar siempre · 10g = 90 kcal</span></div> <div class="dieta-rule"><strong>Pesaje alimentos</strong><span>Obligatorio mín. 2 semanas</span></div> </div>`;
+  const reglas = `
+    <div class="dieta-section-label">Reglas</div>
+    <div class="dieta-rule-grid">
+      <div class="dieta-rule"><strong>Pesaje</strong><span>Diario en ayunas · promedio semanal</span></div>
+      <div class="dieta-rule"><strong>Proteína</strong><span>Constante todos los días</span></div>
+      <div class="dieta-rule"><strong>Subir calorías</strong><span>Menos de 200g/semana</span></div>
+      <div class="dieta-rule"><strong>Bajar calorías</strong><span>Más de 400–500g/semana</span></div>
+      <div class="dieta-rule"><strong>Aceites</strong><span>Controlar siempre · 10g = 90 kcal</span></div>
+      <div class="dieta-rule"><strong>Pesaje alimentos</strong><span>Obligatorio mín. 2 semanas</span></div>
+    </div>`;
 
-container.innerHTML = toggleHtml + macroHtml + comidas + reglas;
+  container.innerHTML = toggleHtml + macroHtml + comidas + reglas;
 }
 
 // ─── HISTORIAL ────────────────────────────────────────────────────────────────
 function renderHistorial() {
-const sessions = getSessions();
-const container = document.getElementById(‘historialContent’);
-if (sessions.length === 0) {
-container.innerHTML = ‘<div class="history-empty">Todavía no hay sesiones guardadas.<br>Completa tu primer entrenamiento.</div>’;
-return;
-}
-container.innerHTML = sessions.map((s, i) => {
-const dateStr = new Date(s.date + ‘T12:00:00’).toLocaleDateString(‘es-CL’, { weekday: ‘long’, day: ‘numeric’, month: ‘long’ });
-return `<div class="session-item" onclick="toggleSessionItem(${i})"> <div class="session-item-header"> <div class="session-item-left"><h3>${s.dia}</h3><p>${dateStr}</p></div> <div class="session-item-right">${s.exercises.length} ej.${s.absHecho ? ' + abs' : ''}</div> </div> <div class="session-item-body" id="si-${i}"> ${s.exercises.map(e => `
-<div class="session-ex-row">
-<div class="session-ex-name">${e.nombre}</div>
-<div class="session-sets-list">${e.sets.filter(set => set.kg || set.reps).map((set, j) => `<span class="session-set-chip">S${j+1}: ${set.kg || '—'} kg × ${set.reps || '—'}</span>`).join(’’)}</div>
-${e.note ? `<div class="session-note">"${e.note}"</div>` : ‘’}
-</div>`).join('')} ${s.absHecho ? '<div class="session-ex-row"><div class="session-ex-name" style="color:var(--accent)">✓ Abs</div></div>' : ''} </div> </div>`;
-}).join(’’);
+  const sessions = getSessions();
+  const container = document.getElementById('historialContent');
+  if (sessions.length === 0) {
+    container.innerHTML = '<div class="history-empty">Todavía no hay sesiones guardadas.<br>Completa tu primer entrenamiento.</div>';
+    return;
+  }
+  container.innerHTML = sessions.map((s, i) => {
+    const dateStr = new Date(s.date + 'T12:00:00').toLocaleDateString('es-CL', { weekday: 'long', day: 'numeric', month: 'long' });
+    return `<div class="session-item" onclick="toggleSessionItem(${i})">
+      <div class="session-item-header">
+        <div class="session-item-left"><h3>${s.dia}</h3><p>${dateStr}</p></div>
+        <div class="session-item-right">${s.exercises.length} ej.${s.absHecho ? ' + abs' : ''}</div>
+      </div>
+      <div class="session-item-body" id="si-${i}">
+        ${s.exercises.map(e => `
+          <div class="session-ex-row">
+            <div class="session-ex-name">${e.nombre}</div>
+            <div class="session-sets-list">${e.sets.filter(set => set.kg || set.reps).map((set, j) => `<span class="session-set-chip">S${j+1}: ${set.kg || '—'} kg × ${set.reps || '—'}</span>`).join('')}</div>
+            ${e.note ? `<div class="session-note">"${e.note}"</div>` : ''}
+          </div>`).join('')}
+        ${s.absHecho ? '<div class="session-ex-row"><div class="session-ex-name" style="color:var(--accent)">✓ Abs</div></div>' : ''}
+      </div>
+    </div>`;
+  }).join('');
 }
 
-function toggleSessionItem(i) { document.getElementById(‘si-’ + i).classList.toggle(‘open’); }
+function toggleSessionItem(i) { document.getElementById('si-' + i).classList.toggle('open'); }
 
 // ─── PROGRESO ─────────────────────────────────────────────────────────────────
-function renderProgreso(filter = ‘’) {
-const sessions = getSessions();
-const container = document.getElementById(‘progContent’);
-let exercises = ALL_EXERCISES;
-if (filter) exercises = exercises.filter(e => e.nombre.toLowerCase().includes(filter.toLowerCase()));
-container.innerHTML = exercises.map(ex => {
-const count = sessions.filter(s => s.exercises && s.exercises.some(e => e.id === ex.id)).length;
-return `<div class="ex-list-item" onclick="showExerciseHistory('${ex.id}', '${ex.nombre}')"> <div><div class="ex-list-name">${ex.nombre}</div><div class="ex-list-day">${ex.dia}</div></div> <div class="ex-list-count">${count} sesión${count !== 1 ? 'es' : ''}</div> </div>`;
-}).join(’’) || ‘<div class="no-data">No se encontraron ejercicios.</div>’;
+function renderProgreso(filter = '') {
+  const sessions = getSessions();
+  const container = document.getElementById('progContent');
+  let exercises = ALL_EXERCISES;
+  if (filter) exercises = exercises.filter(e => e.nombre.toLowerCase().includes(filter.toLowerCase()));
+  container.innerHTML = exercises.map(ex => {
+    const count = sessions.filter(s => s.exercises && s.exercises.some(e => e.id === ex.id)).length;
+    return `<div class="ex-list-item" onclick="showExerciseHistory('${ex.id}', '${ex.nombre}')">
+      <div><div class="ex-list-name">${ex.nombre}</div><div class="ex-list-day">${ex.dia}</div></div>
+      <div class="ex-list-count">${count} sesión${count !== 1 ? 'es' : ''}</div>
+    </div>`;
+  }).join('') || '<div class="no-data">No se encontraron ejercicios.</div>';
 }
 
 function filterExercises(val) { renderProgreso(val); }
 
 // ─── MODAL HISTORIAL EJERCICIO ─────────────────────────────────────────────────
 function showExerciseHistory(exId, nombre) {
-const sessions = getSessions();
-const entries = sessions
-.filter(s => s.exercises && s.exercises.some(e => e.id === exId))
-.map(s => ({ date: s.date, ex: s.exercises.find(e => e.id === exId) }))
-.sort((a, b) => b.date.localeCompare(a.date));
-document.getElementById(‘modalTitle’).textContent = nombre;
-document.getElementById(‘modalSub’).textContent = `${entries.length} sesiones registradas`;
-const body = document.getElementById(‘modalBody’);
-if (entries.length === 0) {
-body.innerHTML = ‘<div class="no-data">Todavía no hay datos para este ejercicio.</div>’;
-} else {
-body.innerHTML = entries.map(entry => {
-const dateStr = new Date(entry.date + ‘T12:00:00’).toLocaleDateString(‘es-CL’, { weekday: ‘short’, day: ‘numeric’, month: ‘short’, year: ‘numeric’ });
-return `<div class="prog-entry"> <div class="prog-entry-date">${dateStr}</div> <div class="prog-entry-sets">${entry.ex.sets.filter(s => s.kg || s.reps).map((s, i) => `<span class="prog-set-chip">S${i+1}: ${s.kg || ‘—’} kg × ${s.reps || ‘—’}</span>`).join('')}</div> ${entry.ex.note ? `<div class="prog-note">”${entry.ex.note}”</div>` : ''} </div>`;
-}).join(’’);
-}
-document.getElementById(‘modalOverlay’).classList.add(‘open’);
+  const sessions = getSessions();
+  const entries = sessions
+    .filter(s => s.exercises && s.exercises.some(e => e.id === exId))
+    .map(s => ({ date: s.date, ex: s.exercises.find(e => e.id === exId) }))
+    .sort((a, b) => b.date.localeCompare(a.date));
+  document.getElementById('modalTitle').textContent = nombre;
+  document.getElementById('modalSub').textContent = `${entries.length} sesiones registradas`;
+  const body = document.getElementById('modalBody');
+  if (entries.length === 0) {
+    body.innerHTML = '<div class="no-data">Todavía no hay datos para este ejercicio.</div>';
+  } else {
+    body.innerHTML = entries.map(entry => {
+      const dateStr = new Date(entry.date + 'T12:00:00').toLocaleDateString('es-CL', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' });
+      return `<div class="prog-entry">
+        <div class="prog-entry-date">${dateStr}</div>
+        <div class="prog-entry-sets">${entry.ex.sets.filter(s => s.kg || s.reps).map((s, i) => `<span class="prog-set-chip">S${i+1}: ${s.kg || '—'} kg × ${s.reps || '—'}</span>`).join('')}</div>
+        ${entry.ex.note ? `<div class="prog-note">"${entry.ex.note}"</div>` : ''}
+      </div>`;
+    }).join('');
+  }
+  document.getElementById('modalOverlay').classList.add('open');
 }
 
 function closeModal(e) {
-if (!e || e.target === document.getElementById(‘modalOverlay’) || e.currentTarget.tagName === ‘BUTTON’) {
-document.getElementById(‘modalOverlay’).classList.remove(‘open’);
-}
+  if (!e || e.target === document.getElementById('modalOverlay') || e.currentTarget.tagName === 'BUTTON') {
+    document.getElementById('modalOverlay').classList.remove('open');
+  }
 }
 
 // ─── EXPORT / IMPORT ──────────────────────────────────────────────────────────
 function exportData() {
-const sessions = getSessions();
-if (sessions.length === 0) { showToast(‘No hay datos para exportar’); return; }
-const blob = new Blob([JSON.stringify({ version: 2, sessions }, null, 2)], { type: ‘application/json’ });
-const url = URL.createObjectURL(blob);
-const a = document.createElement(‘a’);
-a.href = url;
-a.download = `leito-backup-${new Date().toISOString().split('T')[0]}.json`;
-a.click();
-URL.revokeObjectURL(url);
-showToast(‘✓ Datos exportados’);
+  const sessions = getSessions();
+  if (sessions.length === 0) { showToast('No hay datos para exportar'); return; }
+  const blob = new Blob([JSON.stringify({ version: 2, sessions }, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `leito-backup-${new Date().toISOString().split('T')[0]}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('✓ Datos exportados');
 }
 
 function importData(event) {
-const file = event.target.files[0];
-if (!file) return;
-const reader = new FileReader();
-reader.onload = (e) => {
-try {
-const parsed = JSON.parse(e.target.result);
-if (!parsed.sessions || !Array.isArray(parsed.sessions)) throw new Error();
-saveSessions(parsed.sessions);
-renderHoy(); renderHistorial(); renderProgreso();
-showToast(`✓ ${parsed.sessions.length} sesiones importadas`);
-} catch { showToast(‘Error al importar el archivo’); }
-};
-reader.readAsText(file);
-event.target.value = ‘’;
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      const parsed = JSON.parse(e.target.result);
+      if (!parsed.sessions || !Array.isArray(parsed.sessions)) throw new Error();
+      saveSessions(parsed.sessions);
+      renderHoy(); renderHistorial(); renderProgreso();
+      showToast(`✓ ${parsed.sessions.length} sesiones importadas`);
+    } catch { showToast('Error al importar el archivo'); }
+  };
+  reader.readAsText(file);
+  event.target.value = '';
 }
 
 function clearAllData() {
-if (!confirm(’¿Seguro? Se borran todas las sesiones. No se puede deshacer.’)) return;
-localStorage.removeItem(‘leito_sessions’);
-sessionData = {}; absData = {}; openExercises.clear();
-renderHoy(); renderHistorial(); renderProgreso();
-showToast(‘Datos eliminados’);
+  if (!confirm('¿Seguro? Se borran todas las sesiones. No se puede deshacer.')) return;
+  localStorage.removeItem('leito_sessions');
+  sessionData = {}; absData = {}; openExercises.clear();
+  renderHoy(); renderHistorial(); renderProgreso();
+  showToast('Datos eliminados');
 }
 
 function showToast(msg) {
-const t = document.getElementById(‘toast’);
-t.textContent = msg;
-t.classList.add(‘show’);
-setTimeout(() => t.classList.remove(‘show’), 2500);
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
 }
 </script>
-
 </body>
 </html>
